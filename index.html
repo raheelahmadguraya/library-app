@@ -42,7 +42,7 @@
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <form action="#" method="post" id="basic-form" name="form1">
+        <form action="" method="post" id="basic-form" name="form1" onsubmit="return false">
           <p>Please enter book details below:</p>
           <div class="form-row">
               <label for="title">Title*</label>
@@ -54,11 +54,11 @@
         </div>
         <div class="form-row">
           <label for="numOfPages">Number of Pages*</label>
-          <input type="text" id="numOfPages" name="numOfPages" required placeholder=" ">
+          <input type="text" id="numOfPages" name="numOfPages" required placeholder=" " oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');">
         </div>
         <div class="form-row">
           <label for="readStatus">Read*</label>
-          <input type="checkbox" id="readStatus" name="readStatus" required placeholder=" ">
+          <input type="checkbox" id="readStatus" name="readStatus">
         </div>
         <button type="submit" form="basic-form" onclick="">ADD</button>
         </form>

@@ -12,11 +12,8 @@ class Book {
 function addBookToLibrary(title, author, numOfPages, readStatus) {
     const book1 = new Book(title, author, numOfPages, readStatus);
     myLibrary.push(book1);
+    console.table(myLibrary);
 };
-
-addBookToLibrary("test", "Test", 56, 1);
-
-console.log(myLibrary);
 
 function removeBook() {
 
@@ -47,3 +44,9 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+document.querySelector('form').addEventListener('submit', (e) => {
+    const data = Object.fromEntries(new FormData(e.target).entries());
+    addBookToLibrary(data.title, data.author, data.numOfPages, 1);
+    document.getElementById("basic-form").reset();
+  });
