@@ -57,6 +57,10 @@ body{
   row-gap: 15px;
 }
 
+#template {
+  display: none;
+}
+
 #addBookCard {
   background-color: #F6F2F6;
   color: black;

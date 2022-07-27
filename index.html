@@ -14,12 +14,12 @@
       <h1>My Book Collection</h1>
   </div>
   <div class="books">
-    <div class="bookCards">
-      <div class="bookCard">
-        <p>The Grapes of Wrath</p>
-        <p>John Steinbeck</p>
-        <p>Length: 123 Pages</p>
-        <p>Read</p>
+    <div class="bookCards" id="bookCards">
+      <div class="bookCard" id="template">
+        <p class="title">The Grapes of Wrath</p>
+        <p class="author">John Steinbeck</p>
+        <p class="numOfPages">Length: 123 Pages</p>
+        <p class="readStatus">Read</p>
       </div>
       <div class="bookCard" id="addBookCard">
         <button id="myBtn">
@@ -60,7 +60,7 @@
           <label for="readStatus">Read*</label>
           <input type="checkbox" id="readStatus" name="readStatus">
         </div>
-        <button type="submit" form="basic-form" onclick="">ADD</button>
+        <button id="submit" type="submit" form="basic-form" onclick="">ADD</button>
         </form>
         <span class="close">&times;</span>
       </div>
