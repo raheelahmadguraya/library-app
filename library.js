@@ -35,9 +35,9 @@ function displayBook (book1, myLibrary) {
   const readStatusbtn = document.createElement("button");
   readStatusbtn.classList.add("readStatusbtn");
   if (book1.readStatus == 1) {
-    readStatusbtn.innerHTML = '<span class="material-symbols-outlined">check_box</span><p>Read</p>'
+    readStatusbtn.innerHTML = '<span class="material-symbols-outlined">check_box</span><span style="display: none;" class="material-symbols-outlined">check_box_outline_blank</span><p>Read</p>'
   }else {
-    readStatusbtn.innerHTML = '<span class="material-symbols-outlined">check_box_outline_blank</span><p>Read</p>'
+    readStatusbtn.innerHTML = '<span style="display: none;" class="material-symbols-outlined">check_box</span><span class="material-symbols-outlined">check_box_outline_blank</span><p>Read</p>'
   }
   bookCardbtns.appendChild(readStatusbtn);
   const rmbtn = document.createElement("button");
@@ -56,12 +56,33 @@ function removeBook(bookCard) {
   bookCard.remove();
 }
 
+function changeReadStatus () {
+
+}
+
 function addFunctionality () {
   const rmbtn = document.querySelectorAll('.rmbtn');
 
   rmbtn.forEach(el => el.addEventListener('click', event => {
     const book = event.target.parentElement.parentElement.parentElement;
     removeBook(book);
+  }));
+
+  const toggleReadbtn = document.querySelectorAll('.readStatusbtn');
+
+  toggleReadbtn.forEach(el => el.addEventListener('click', event => {
+    const book = event.target.parentElement.parentElement.parentElement;
+    const index = book.id;
+    const toggleIcon = event.target;
+    console.log(toggleIcon);
+    if (myLibrary[index].readStatus == 1){
+      myLibrary[index].readStatus = 0;
+      toggleIcon.innerHTML = 'check_box_outline_blank';
+    } else {
+      myLibrary[index].readStatus = 1;
+      toggleIcon.innerHTML = 'check_box';
+    }
+    console.table(myLibrary);
   }));
 }
 
