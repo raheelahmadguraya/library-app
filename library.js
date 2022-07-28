@@ -12,18 +12,40 @@ class Book {
 function addBookToLibrary (title, author, numOfPages, readStatus) {
   const book1 = new Book(title, author, numOfPages, readStatus);
   myLibrary.push(book1);
-  displayBook(book1);
+  displayBook(book1, myLibrary);
 };
 
-function displayBook (book1) {
+function displayBook (book1, myLibrary) {
 
   const bookCard = document.createElement('div');
+  const index = myLibrary.length - 1;
+
   bookCard.classList.add('bookCard');
+  bookCard.setAttribute('id', index);
+
   for (key in book1){
     const p = document.createElement("p");
     p.innerHTML = book1[key];
     bookCard.appendChild(p);
   }
+
+  const bookCardbtns = document.createElement("div");
+  bookCardbtns.classList.add("bookCardbtns");
+  const readStatusbtn = document.createElement("button");
+  readStatusbtn.classList.add("readStatusbtn");
+  if (book1.readStatus == 1) {
+    readStatusbtn.innerHTML = '<span class="material-symbols-outlined">check_box</span><p>Read</p>'
+  }else {
+    readStatusbtn.innerHTML = '<span class="material-symbols-outlined">check_box_outline_blank</span><p>Read</p>'
+  }
+  bookCardbtns.appendChild(readStatusbtn);
+  const rmbtn = document.createElement("button");
+  rmbtn.classList.add("rmbtn");
+  rmbtn.innerHTML = '<span class="material-symbols-outlined">delete</span>'
+  bookCardbtns.appendChild(rmbtn);
+
+  bookCard.appendChild(bookCardbtns);
+
   const books = document.getElementById("bookCards");
   books.prepend(bookCard);
 }
@@ -60,10 +82,6 @@ window.onclick = function(event) {
   }
 }
 
-addbtn.onclick = function() {
-  modal.style.display = "none";
-}
-
 document.querySelector('form').addEventListener('submit', (e) => {
   const data = Object.fromEntries(new FormData(e.target).entries());
   if (data.readStatus == "on"){
@@ -73,5 +91,6 @@ document.querySelector('form').addEventListener('submit', (e) => {
   }
   addBookToLibrary(data.title, data.author, data.numOfPages, data.readStatus);
   document.getElementById("basic-form").reset();
+  modal.style.display = "none";
 });
 

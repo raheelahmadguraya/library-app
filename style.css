@@ -16,6 +16,15 @@ body{
   grid-template-rows: 100px 1fr 50px;
   row-gap: 40px;
 }
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
 
 .header {
   background-color: #1C252C;
@@ -53,12 +62,24 @@ body{
   display: grid;
   place-items: start;
   padding: 20px;
-  grid-template-rows: 15px 15px 15px 15px;
+  grid-template-rows: 15px 15px 15px 15px 1fr;
   row-gap: 15px;
 }
 
+.bookCardbtns {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: flex-end;
+}
+
+.readStatusbtn {
+  place-self: flex-end start;
+}
+
 #template {
-  display: none;
+  /*display: none;*/
 }
 
 #addBookCard {
@@ -77,13 +98,6 @@ body{
 }
 
 #addBookCard button {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
   width: 290px;
   height: 265px;
 }
@@ -105,7 +119,7 @@ body{
 }
 
 .modal {
-  display: grid; /* Hidden by default */
+  display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
