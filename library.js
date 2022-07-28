@@ -1,4 +1,5 @@
 let myLibrary = [];
+addFunctionality();
 
 class Book {
   constructor (title, author, numOfPages, readStatus) {
@@ -48,10 +49,20 @@ function displayBook (book1, myLibrary) {
 
   const books = document.getElementById("bookCards");
   books.prepend(bookCard);
+  addFunctionality();
 }
 
 function removeBook(bookCard) {
   bookCard.remove();
+}
+
+function addFunctionality () {
+  const rmbtn = document.querySelectorAll('.rmbtn');
+
+  rmbtn.forEach(el => el.addEventListener('click', event => {
+    const book = event.target.parentElement.parentElement.parentElement;
+    removeBook(book);
+  }));
 }
 
 // Get the modal
@@ -82,11 +93,6 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
-
-rmbtn.onclick = function(event) {
-  const book = event.target.parentElement.parentElement.parentElement;
-  removeBook(book);
 }
 
 document.querySelector('form').addEventListener('submit', (e) => {
