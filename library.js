@@ -50,8 +50,8 @@ function displayBook (book1, myLibrary) {
   books.prepend(bookCard);
 }
 
-function removeBook() {
-
+function removeBook(bookCard) {
+  bookCard.remove();
 }
 
 // Get the modal
@@ -64,6 +64,8 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 var addbtn = document.getElementById("submit");
+
+var rmbtn = document.getElementsByClassName("rmbtn")[0];
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
@@ -80,6 +82,11 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+}
+
+rmbtn.onclick = function(event) {
+  const book = event.target.parentElement.parentElement.parentElement;
+  removeBook(book);
 }
 
 document.querySelector('form').addEventListener('submit', (e) => {
