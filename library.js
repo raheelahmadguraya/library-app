@@ -65,7 +65,34 @@ function addFunctionality () {
 
   rmbtn.forEach(el => el.addEventListener('click', event => {
     const book = event.target.parentElement.parentElement.parentElement;
-    removeBook(book);
+      // Get the modal
+      var cdmodal = document.getElementById("confirmDeleteModal");
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[1];
+
+      // When the user clicks the button, open the modal 
+      cdmodal.style.display = "grid";
+
+      document.getElementById("yes").onclick = function () {
+        cdmodal.style.display = "none";
+        removeBook(book);
+      }
+
+      document.getElementById("no").onclick = function () {
+        cdmodal.style.display = "none";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        cdmodal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == cdmodal) {
+          cdmodal.style.display = "none";
+        }
+      }
   }));
 
   const toggleReadbtn = document.querySelectorAll('.readStatusbtn');
@@ -97,8 +124,6 @@ var span = document.getElementsByClassName("close")[0];
 
 var addbtn = document.getElementById("submit");
 
-var rmbtn = document.getElementsByClassName("rmbtn")[0];
-
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "grid";
@@ -127,4 +152,3 @@ document.querySelector('form').addEventListener('submit', (e) => {
   document.getElementById("basic-form").reset();
   modal.style.display = "none";
 });
-
